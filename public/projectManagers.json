@@ -1,0 +1,36 @@
+{
+  "projectManagers": [
+    {
+      "id": "PM001",
+      "name": "Alice Johnson",
+      "employees": [
+        {
+          "id": "EMP001",
+          "name": "John Doe",
+          "hoursLogged": 120
+        },
+        {
+          "id": "EMP002",
+          "name": "Jane Smith",
+          "hoursLogged": 90
+        }
+      ]
+    },
+    {
+      "id": "PM002",
+      "name": "Bob Brown",
+      "employees": [
+        {
+          "id": "EMP003",
+          "name": "Tom Lee",
+          "hoursLogged": 110
+        },
+        {
+          "id": "EMP004",
+          "name": "Sarah Connor",
+          "hoursLogged": 130
+        }
+      ]
+    }
+  ]
+}
