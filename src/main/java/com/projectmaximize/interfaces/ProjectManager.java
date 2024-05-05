@@ -8,4 +8,5 @@ public interface ProjectManager {
     String getProjectProgress(String projectId);
     int getTotalTimeConsumption(String projectId);
     Project getProject(String projectId);
+    String getName();
 }

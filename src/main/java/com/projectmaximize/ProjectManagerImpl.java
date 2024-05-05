@@ -44,6 +44,7 @@ public class ProjectManagerImpl implements ProjectManager {
             for (Activity activity : project.getActivities()) {
                 if ((activity).getId().equals(activityId)) {
                     (activity).allocateEmployee(employee);
+                    employee.assignActivity(activity);
                     break;
                 }
             }
@@ -65,6 +66,11 @@ public class ProjectManagerImpl implements ProjectManager {
     @Override
     public Project getProject(String projectId) {
         return projects.get(projectId);
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     public Map<String, Project> getProjects() {

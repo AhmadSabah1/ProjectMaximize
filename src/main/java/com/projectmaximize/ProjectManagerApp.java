@@ -1,5 +1,6 @@
 package com.projectmaximize;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -13,6 +14,17 @@ public class ProjectManagerApp {
     }
 
     public void run() {
+        ArrayList<ProjectManagerImpl> managers = new ArrayList<>();
+        managers.add(new ProjectManagerImpl("Max"));
+        managers.add(new ProjectManagerImpl("Joseph"));
+        managers.add(new ProjectManagerImpl("Nabaa"));
+        managers.add(new ProjectManagerImpl("Ahmad"));
+
+        System.out.println("\n--- Enter username ---");
+        String name = scanner.nextLine();
+
+        projectManager = findManagerByName(managers, name);
+
         boolean running = true;
         while (running) {
             System.out.println("\n--- Project Manager Menu ---");
@@ -84,8 +96,21 @@ public class ProjectManagerApp {
         System.out.println(reportGenerator.generateTimeReport(UUID.fromString(projectId)));
     }
 
-    public static void main(String[] args) {
-        new ProjectManagerApp().run();
+    private static ProjectManagerImpl findManagerByName(ArrayList<ProjectManagerImpl> managers, String name) {
+        boolean found = false; // Flag to check if an employee is found
+
+        for (ProjectManagerImpl manager : managers) {
+            if (manager.getName().equalsIgnoreCase(name)) {
+                System.out.println("Employee found: " + manager.getName());
+                found = true;
+                return manager;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No employee found with the name: " + name);
+        }
+
+        return null;
     }
 }
-

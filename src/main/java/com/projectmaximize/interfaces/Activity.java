@@ -11,5 +11,4 @@ public interface Activity {
     void allocateEmployee(Employee employee);
     List<Employee> getAssignedEmployees();
     String getId();
-
 }

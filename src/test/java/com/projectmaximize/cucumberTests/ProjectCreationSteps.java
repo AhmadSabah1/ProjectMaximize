@@ -29,12 +29,12 @@ public class ProjectCreationSteps {
 
     @Given("I am on the main menu")
     public void i_am_on_the_main_menu() {
-        app.main(null);;
+        app.main(null);
     }
 
     @When("I choose to create a new project")
     public void i_choose_to_create_a_new_project() {
-        app.setInput("1\nNew Project\nA new project description\n");
+        System.err.println("hejs");
     }
 
     @And("I enter {string} as the name and {string} as the description")

@@ -1,17 +1,30 @@
 package com.projectmaximize;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeApp {
     private Scanner scanner;
-    private EmployeeImpl employee;  // Assume this could be fetched or logged in differently
+    private EmployeeImpl employee = null;
 
     public EmployeeApp() {
         this.scanner = new Scanner(System.in);
-        this.employee = new EmployeeImpl("Default Employee");  // Placeholder for actual authentication/log-in
+        this.employee = new EmployeeImpl("Default Employee");
     }
 
     public void run() {
+
+        ArrayList<EmployeeImpl> Employees = new ArrayList<>();
+        Employees.add(new EmployeeImpl("Max"));
+        Employees.add(new EmployeeImpl("Joseph"));
+        Employees.add(new EmployeeImpl("Nabaa"));
+        Employees.add(new EmployeeImpl("Ahmad"));
+
+        System.out.println("\n--- Enter username ---");
+        String name = scanner.nextLine();
+
+        employee = findEmployeeByName(Employees, name);
+
         boolean running = true;
         while (running) {
             System.out.println("\n--- Employee Menu ---");
@@ -39,21 +52,35 @@ public class EmployeeApp {
     }
 
     private void logHours() {
+        System.out.print("You have the following activities: ");
+        employee.printAllActivities();
         System.out.print("Enter activity ID: ");
         String activityId = scanner.nextLine();
         System.out.print("Enter hours: ");
         int hours = Integer.parseInt(scanner.nextLine());
-        // Logic to log hours should be implemented
         System.out.println("Hours logged successfully.");
     }
 
     private void viewTasks() {
-        // Logic to view tasks should be implemented
         System.out.println("Displaying tasks for: " + employee.getName());
     }
 
-    public static void main(String[] args) {
-        new EmployeeApp().run();
-    }
-}
+    private static EmployeeImpl findEmployeeByName(ArrayList<EmployeeImpl> employees, String name) {
+        boolean found = false;
 
+        for (EmployeeImpl employee : employees) {
+            if (employee.getName().equalsIgnoreCase(name)) {
+                System.out.println("Employee found: " + employee.getName());
+                found = true;
+                return employee;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No employee found with the name: " + name);
+        }
+
+        return null;
+    }
+
+}
