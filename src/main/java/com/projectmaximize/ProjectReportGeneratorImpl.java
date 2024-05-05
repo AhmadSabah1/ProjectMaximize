@@ -2,8 +2,6 @@ package com.projectmaximize;
 
 import com.projectmaximize.interfaces.*;
 
-import java.util.UUID;
-
 public class ProjectReportGeneratorImpl implements ProjectReportGenerator {
     private ProjectManager projectManager;
 

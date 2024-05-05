@@ -37,6 +37,9 @@ public class App {
                 EmployeeApp employeeApp = new EmployeeApp(employees);
                 employeeApp.run();
             } 
+            else if(appType == 3) {
+                System.out.println("Exiting ...");
+            }
             else {
                 System.out.println("Invalid choise. Try again");
                 appType = Integer.parseInt(scanner.nextLine());

@@ -2,7 +2,6 @@ package com.projectmaximize;
 
 import com.projectmaximize.interfaces.*;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,7 +72,6 @@ public class ProjectManagerImpl implements ProjectManager {
         return projects;
     }
 
-    // New method to display all projects
     public void displayAllProjects() {
         if (projects.isEmpty()) {
             System.out.println("No projects available.");

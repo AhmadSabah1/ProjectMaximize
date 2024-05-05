@@ -35,36 +35,44 @@ public class ProjectReportGeneratorImplTest {
 
     @Test
     public void testGenerateTimeReport() {
+        // Precondition: Project must exist to generate a report.
         String expectedReport = "Time Report for Project: Project A\nDevelopment - Total Hours: 100\n";
         when(projectMock.getName()).thenReturn("Project A");
 
-        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
+        // Postcondition: The report format must match the expected output.
+        assertEquals("Generated time report should match the expected format", expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
     }
 
     @Test
     public void testGenerateResourceAllocationReportNotFound() {
+        // Precondition: Returns null if project is not found.
         when(projectManagerMock.getProject(projectId.toString())).thenReturn(null);
         
         String expectedReport = "Project not found.";
-        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
+        // Postcondition: Should return 'Project not found.' if the project is null.
+        assertEquals("Report should indicate project not found when project is null", expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
     }
 
     @Test
     public void testGenerateTimeReportNotFound() {
+        // Precondition: Returns null if project is not found.
         when(projectManagerMock.getProject(projectId.toString())).thenReturn(null);
         
         String expectedReport = "Project not found.";
-        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
+        // Postcondition: Should return 'Project not found.' if the project is null.
+        assertEquals("Report should indicate project not found when project is null", expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
     }
 
     @Test
     public void testGenerateResourceAllocationReport() {
+        // Precondition: Project must exist and activities must have assigned employees.
         when(projectMock.getName()).thenReturn("Project A");
         when(activityMock.getAssignedEmployees()).thenReturn(Arrays.asList(
             new EmployeeImpl("John Doe")
         ));
 
         String expectedReport = "Resource Allocation Report for Project: Project A\nDevelopment - Allocated Resources:\n   - John Doe\n";
-        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
+        // Postcondition: The report should correctly list all assigned employees for activities.
+        assertEquals("Generated resource report should match the expected format", expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
     }
 }

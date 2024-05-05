@@ -84,23 +84,6 @@ public class ProjectManagerApp {
         addActivityToProject(selectedProject);
     }
 
-    private void allocateResource() {
-        System.out.print("Enter activity ID: ");
-        String activityId = scanner.nextLine();
-        System.out.print("Enter employee name: ");
-        String employeeName = scanner.nextLine();
-
-        // Find the employee in the employee list based on the name
-        EmployeeImpl employee = findEmployeeByName(employeeName);
-        if (employee != null) {
-            projectManager.allocateResource(activityId, employee);
-
-            System.out.println("Resource allocated successfully.");
-        } else {
-            System.out.println("Employee not found: " + employeeName);
-        }
-    }
-
     private void generateReport() {
         ProjectImpl selectedProject = selectProject();
         if (selectedProject == null) {
@@ -112,15 +95,6 @@ public class ProjectManagerApp {
         String projectId = selectedProject.getProjectId();  // Method getProjectId() should return a UUID
         ProjectReportGeneratorImpl reportGenerator = new ProjectReportGeneratorImpl(projectManager);
         System.out.println(reportGenerator.generateTimeReport(projectId));
-    }
-
-    private EmployeeImpl findEmployeeByName(String name) {
-        for (EmployeeImpl employee : employees) {
-            if (employee.getName().equalsIgnoreCase(name)) {
-                return employee;
-            }
-        }
-        return null;
     }
 
     private void allocateResourceInteractive() {
