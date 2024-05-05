@@ -33,19 +33,19 @@ public class EmployeeImplTest {
 
     @Test
     public void testLogHours() {
-        employee.logHours(activityMock, 5);
+        employee.logHours(activityMock.getId(), 5);
         assertEquals(5, employee.getTotalHoursLogged());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testLogNegativeHours() {
-        employee.logHours(activityMock, -1);
+        employee.logHours(activityMock.getId(), -1);
     }
 
     @Test
     public void testMultipleLogsIncreaseHours() {
-        employee.logHours(activityMock, 5);
-        employee.logHours(activityMock, 3);
+        employee.logHours(activityMock.getId(), 5);
+        employee.logHours(activityMock.getId(), 3);
         assertEquals(8, employee.getTotalHoursLogged());
     }
     

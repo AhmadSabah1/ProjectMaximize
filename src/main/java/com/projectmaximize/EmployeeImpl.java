@@ -26,21 +26,25 @@ public class EmployeeImpl implements Employee {
         if (hours < 0) {
             throw new IllegalArgumentException("Hours cannot be negative.");
         }
-
-        activity = hoursPerActivity. //give me the activity with activityId and log hours on it;
-
+    
+        // Retrieve the Activity object using the activityId
+        Activity activity = getActivityById(activityId);
+        if (activity == null) {
+            System.err.println("Activity not found with ID: " + activityId);
+            return;
+        }
+    
         List<Employee> assignedEmployees = activity.getAssignedEmployees();
-
+    
         boolean isEmployeeAssigned = assignedEmployees.stream()
-        .anyMatch(employee -> employee.getId().equals(id));
-
-        if(isEmployeeAssigned) {
+            .anyMatch(employee -> employee.getId().equals(id));
+    
+        if (isEmployeeAssigned) {
             hoursPerActivity.merge(activity, hours, Integer::sum);
             activity.registerTime(hours);
         } else {
             System.err.println("You are not assigned to this activity");
         }
-        
     }
 
     @Override
@@ -73,5 +77,14 @@ public class EmployeeImpl implements Employee {
     @Override
     public void assignActivity(Activity activity) {
         hoursPerActivity.putIfAbsent(activity, 0);
+    }
+
+    private Activity getActivityById(String activityId) {
+        for (Activity activity : hoursPerActivity.keySet()) {
+            if (activity.getId().equals(activityId)) {
+                return activity;
+            }
+        }
+        return null;
     }
 }

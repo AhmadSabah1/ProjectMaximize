@@ -15,4 +15,5 @@ public interface Project {
     ProjectStatus getStatus();
     void setStatus(ProjectStatus status);
     public String getProgress();
+    public String getProjectId();
 }

@@ -38,7 +38,7 @@ public class ProjectReportGeneratorImplTest {
         String expectedReport = "Time Report for Project: Project A\nDevelopment - Total Hours: 100\n";
         when(projectMock.getName()).thenReturn("Project A");
 
-        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId));
+        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ProjectReportGeneratorImplTest {
         when(projectManagerMock.getProject(projectId.toString())).thenReturn(null);
         
         String expectedReport = "Project not found.";
-        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId));
+        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ProjectReportGeneratorImplTest {
         when(projectManagerMock.getProject(projectId.toString())).thenReturn(null);
         
         String expectedReport = "Project not found.";
-        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId));
+        assertEquals(expectedReport, reportGenerator.generateTimeReport(projectId.toString()));
     }
 
     @Test
@@ -65,6 +65,6 @@ public class ProjectReportGeneratorImplTest {
         ));
 
         String expectedReport = "Resource Allocation Report for Project: Project A\nDevelopment - Allocated Resources:\n   - John Doe\n";
-        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId));
+        assertEquals(expectedReport, reportGenerator.generateResourceAllocationReport(projectId.toString()));
     }
 }

@@ -80,4 +80,9 @@ public class ProjectImpl implements Project {
         long completedActivities = activities.stream().filter(a -> ((ActivityImpl) a).getTimeConsumption() >= a.getEstimatedHours()).count();
         return String.format("Progress: %d%%", (int) ((completedActivities / (double) totalActivities) * 100));
     }
+
+    @Override
+    public String getProjectId() {
+        return id;
+    }
 }

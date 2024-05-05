@@ -40,10 +40,11 @@ public class ProjectManagerImpl implements ProjectManager {
 
     @Override
     public void allocateResource(String activityId, Employee employee) {
+        
         for (ProjectImpl project : projects.values()) {
             for (Activity activity : project.getActivities()) {
-                if ((activity).getId().equals(activityId)) {
-                    (activity).allocateEmployee(employee);
+                if (activity.getId().equals(activityId)) {
+                    activity.allocateEmployee(employee);
                     employee.assignActivity(activity);
                     break;
                 }
@@ -68,12 +69,24 @@ public class ProjectManagerImpl implements ProjectManager {
         return projects.get(projectId);
     }
 
+    public Map<String, ProjectImpl> getProjects() {
+        return projects;
+    }
+
+    // New method to display all projects
+    public void displayAllProjects() {
+        if (projects.isEmpty()) {
+            System.out.println("No projects available.");
+            return;
+        }
+        System.out.println("Projects managed by " + name + ":");
+        for (Map.Entry<String, ProjectImpl> entry : projects.entrySet()) {
+            System.out.println("Project ID: " + entry.getKey() + ", Project Name: " + entry.getValue().getName());
+        }
+    }
+
     @Override
     public String getName() {
         return this.name;
-    }
-
-    public Map<String, Project> getProjects() {
-        return Collections.unmodifiableMap(projects);
     }
 }

@@ -6,24 +6,20 @@ import java.util.Scanner;
 public class EmployeeApp {
     private Scanner scanner;
     private EmployeeImpl employee = null;
+    private ArrayList<EmployeeImpl> employees;
 
-    public EmployeeApp() {
+    public EmployeeApp(ArrayList<EmployeeImpl> employees) {
         this.scanner = new Scanner(System.in);
         this.employee = new EmployeeImpl("Default Employee");
+        this.employees = employees;
     }
 
     public void run() {
 
-        ArrayList<EmployeeImpl> Employees = new ArrayList<>();
-        Employees.add(new EmployeeImpl("Max"));
-        Employees.add(new EmployeeImpl("Joseph"));
-        Employees.add(new EmployeeImpl("Nabaa"));
-        Employees.add(new EmployeeImpl("Ahmad"));
-
         System.out.println("\n--- Enter username ---");
         String name = scanner.nextLine();
 
-        employee = findEmployeeByName(Employees, name);
+        employee = findEmployeeByName(employees, name);
 
         boolean running = true;
         while (running) {
@@ -48,7 +44,6 @@ public class EmployeeApp {
                     System.out.println("Invalid choice, try again.");
             }
         }
-        scanner.close();
     }
 
     private void logHours() {
@@ -58,6 +53,7 @@ public class EmployeeApp {
         String activityId = scanner.nextLine();
         System.out.print("Enter hours: ");
         int hours = Integer.parseInt(scanner.nextLine());
+        employee.logHours(activityId, hours);
         System.out.println("Hours logged successfully.");
     }
 

@@ -12,8 +12,8 @@ public class ProjectReportGeneratorImpl implements ProjectReportGenerator {
     }
 
     @Override
-    public String generateTimeReport(UUID projectId) {
-        Project project = projectManager.getProject(projectId.toString());
+    public String generateTimeReport(String projectId) {
+        Project project = projectManager.getProject(projectId);
         if (project == null) {
             return "Project not found.";
         }
@@ -29,7 +29,7 @@ public class ProjectReportGeneratorImpl implements ProjectReportGenerator {
     }
 
     @Override
-    public String generateResourceAllocationReport(UUID projectId) {
+    public String generateResourceAllocationReport(String projectId) {
         Project project = projectManager.getProject(projectId.toString());
         if (project == null) {
             return "Project not found.";
