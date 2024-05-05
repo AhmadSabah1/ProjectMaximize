@@ -3,6 +3,7 @@ package com.projectmaximize;
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Employee;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +56,11 @@ public class EmployeeImpl implements Employee {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public List<Activity> getActivities() {
+        return new ArrayList<Activity>(hoursPerActivity.keySet());
     }
 
     @Override

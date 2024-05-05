@@ -1,7 +1,10 @@
 package com.projectmaximize;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.projectmaximize.interfaces.Activity;
 
 public class EmployeeApp {
     private Scanner scanner;
@@ -32,7 +35,7 @@ public class EmployeeApp {
 
             switch (choice) {
                 case 1:
-                    logHours();
+                    logHoursInteractive();
                     break;
                 case 2:
                     viewTasks();
@@ -46,19 +49,59 @@ public class EmployeeApp {
         }
     }
 
-    private void logHours() {
-        System.out.print("You have the following activities: ");
-        employee.printAllActivities();
-        System.out.print("Enter activity ID: ");
-        String activityId = scanner.nextLine();
-        System.out.print("Enter hours: ");
-        int hours = Integer.parseInt(scanner.nextLine());
-        employee.logHours(activityId, hours);
-        System.out.println("Hours logged successfully.");
+    private void logHoursInteractive() {
+        Activity selectedActivity = selectActivityFromEmployee();
+        if (selectedActivity == null) {
+            System.out.println("No valid activity selected or available.");
+            return;
+        }
+
+        System.out.print("Enter the number of hours to log for " + selectedActivity.getName() + ": ");
+        int hours;
+        try {
+            hours = Integer.parseInt(scanner.nextLine());
+            if (hours > 0) {
+                employee.logHours(selectedActivity.getId(), hours);
+                System.out.println("Hours successfully logged.");
+            } else {
+                System.out.println("Please enter a positive number of hours.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+        }
     }
+
+    private Activity selectActivityFromEmployee() {
+        List<Activity> activities = employee.getActivities();
+        if (activities.isEmpty()) {
+            System.out.println("You have no activities assigned.");
+            return null;
+        }
+
+        System.out.println("Select an activity to log hours:");
+        for (int i = 0; i < activities.size(); i++) {
+            System.out.println((i + 1) + ". " + activities.get(i).getName());
+        }
+
+        System.out.print("Enter the number of the activity: ");
+        int activityIndex;
+        try {
+            activityIndex = Integer.parseInt(scanner.nextLine()) - 1;
+            if (activityIndex >= 0 && activityIndex < activities.size()) {
+                return activities.get(activityIndex);
+            } else {
+                System.out.println("Invalid activity selection.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+        }
+        return null;
+    }
+
 
     private void viewTasks() {
         System.out.println("Displaying tasks for: " + employee.getName());
+        employee.printAllActivities();
     }
 
     private static EmployeeImpl findEmployeeByName(ArrayList<EmployeeImpl> employees, String name) {
