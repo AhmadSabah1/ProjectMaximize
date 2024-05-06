@@ -111,6 +111,6 @@ public class ProjectManagerImpl implements ProjectManager {
                 return project;
             }
         }
-        return null; // Return null if no project matches the given name
+        return null;
     }
 }

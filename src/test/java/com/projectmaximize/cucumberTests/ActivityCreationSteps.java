@@ -19,7 +19,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-// Add to existing or create a new Step Definitions class
 public class ActivityCreationSteps {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -47,7 +46,6 @@ public class ActivityCreationSteps {
 
     @Given("a project named {string} exists")
     public void a_project_named_exists(String projectName) {
-        // Assuming the createProject method will add the project to a retrievable list
         projectManager.createProject(projectName, "Sample project description");
     }
 
@@ -151,8 +149,6 @@ public class ActivityCreationSteps {
 
     @Given("an employee named {string} exists")
     public void an_employee_named_exists(String employeeName) {
-        // Assuming you have a method to handle or check employees, or employee
-        // management is handled externally
     }
 
     @When("I assign {string} to {string} in {string}")
@@ -163,8 +159,8 @@ public class ActivityCreationSteps {
                 .findFirst()
                 .orElse(null);
         if (activity != null) {
-            EmployeeImpl employee = new EmployeeImpl(employeeName); // Assuming this creates an employee with the given
-                                                                    // name
+            EmployeeImpl employee = new EmployeeImpl(employeeName);
+
             projectManager.allocateResource(activity.getId(), employee);
         } else {
             System.out.println("Activity does not exist");
@@ -202,10 +198,8 @@ public class ActivityCreationSteps {
     @Given("the project {string} has activities with recorded hours")
     public void the_project_has_activities_with_recorded_hours(String projectName) {
         Project project = projectManager.getProjectByName(projectName);
-        // Sample activities with hours, ensure these methods exist or are correctly simulated
         projectManager.createActivity(project.getId(), "Design", 10);
         projectManager.createActivity(project.getId(), "Development", 20);
-        // Assume some method to log hours directly
     }
 
     @Given("the project {string} has activities with assigned employees")
@@ -213,7 +207,6 @@ public class ActivityCreationSteps {
         Project project = projectManager.getProjectByName(projectName);
         projectManager.createActivity(project.getId(), "Design", 10);
         projectManager.createActivity(project.getId(), "Development", 20);
-        // Assign employees, ensure these methods exist or are correctly simulated
         Activity design = project.getActivities().get(0);
         Activity development = project.getActivities().get(1);
         EmployeeImpl employee = new EmployeeImpl("John Doe");

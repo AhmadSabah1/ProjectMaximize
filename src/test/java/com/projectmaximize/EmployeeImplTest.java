@@ -20,25 +20,20 @@ public class EmployeeImplTest {
 
     @Before
     public void setUp() {
-        // Initialize Mockito annotations for mocked objects
         MockitoAnnotations.initMocks(this);
 
-        // Set up the employee with a valid name
         employee = new EmployeeImpl("John Doe");
 
-        // Configure the mocks
         when(activityMock.getId()).thenReturn("activity-id");
         when(activityMock.getName()).thenReturn("Development");
-        // Assume this employee is assigned to the activityMock
+
         when(activityMock.getAssignedEmployees()).thenReturn(java.util.Collections.singletonList(employee));
         when(activityMock.getTimeConsumption()).thenReturn(10); // Assume some time has already been logged
 
-        // Setup for unassigned activity mock
         when(unassignedActivityMock.getId()).thenReturn("unassigned-activity-id");
         when(unassignedActivityMock.getName()).thenReturn("Testing");
         when(unassignedActivityMock.getAssignedEmployees()).thenReturn(java.util.Collections.emptyList()); // No employees assigned
 
-        // Assign activity to the employee
         employee.assignActivity(activityMock);
     }
 
