@@ -16,8 +16,14 @@ public class ProjectManagerImpl implements ProjectManager {
 
     @Override
     public void createProject(String name, String description) {
-        ProjectImpl project = new ProjectImpl(name, description);
-        projects.put(project.getId(), project);
+        if(name.isEmpty() || description.isEmpty())
+        {
+            System.err.println("Project name and description are required");
+        } else {
+            ProjectImpl project = new ProjectImpl(name, description);
+            projects.put(project.getId(), project);
+            System.out.println("Project created successfully.");    
+        }
     }
 
     @Override
@@ -25,29 +31,39 @@ public class ProjectManagerImpl implements ProjectManager {
         ProjectImpl project = projects.get(projectId);
         if (project != null) {
             project.editProjectDetails(newName, newDescription);
+        } else {
+            System.out.println("Project not found");
         }
     }
 
     @Override
     public void createActivity(String projectId, String activityName, int estimatedHours) {
         ProjectImpl project = projects.get(projectId);
-        if (project != null) {
+        if (project == null) {
+            System.out.println("Project does not exist");
+        } else {
             Activity newActivity = new ActivityImpl(activityName, estimatedHours);
             project.addActivity(newActivity);
+            System.out.println("Activity created successfully!");
         }
     }
 
     @Override
     public void allocateResource(String activityId, Employee employee) {
-        
+        boolean hasFoundActivity = false;
         for (ProjectImpl project : projects.values()) {
             for (Activity activity : project.getActivities()) {
                 if (activity.getId().equals(activityId)) {
                     activity.allocateEmployee(employee);
                     employee.assignActivity(activity);
+                    hasFoundActivity = true;
                     break;
                 }
             }
+        }
+
+        if(!hasFoundActivity) {
+            System.out.println("Activity does not exist");
         }
     }
 
@@ -86,5 +102,15 @@ public class ProjectManagerImpl implements ProjectManager {
     @Override
     public String getName() {
         return this.name;
+    }
+    
+    @Override
+    public Project getProjectByName(String projectName) {
+        for (ProjectImpl project : projects.values()) {
+            if (project.getName().equals(projectName)) {
+                return project;
+            }
+        }
+        return null; // Return null if no project matches the given name
     }
 }

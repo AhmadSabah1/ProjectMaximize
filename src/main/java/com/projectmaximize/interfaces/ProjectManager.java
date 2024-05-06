@@ -9,4 +9,5 @@ public interface ProjectManager {
     int getTotalTimeConsumption(String projectId);
     Project getProject(String projectId);
     String getName();
+    Project getProjectByName(String projectName);
 }

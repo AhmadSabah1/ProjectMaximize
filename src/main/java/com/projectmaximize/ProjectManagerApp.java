@@ -65,16 +65,19 @@ public class ProjectManagerApp {
         System.out.print("Enter project description: ");
         String description = scanner.nextLine();
         projectManager.createProject(name, description);
-        System.out.println("Project created successfully.");
     }
 
     private void addActivityToProject(ProjectImpl project) {
-        System.out.print("Enter activity name: ");
-        String activityName = scanner.nextLine();
-        System.out.print("Enter estimated hours: ");
-        int hours = Integer.parseInt(scanner.nextLine());
-        project.addActivity(new ActivityImpl(activityName, hours));
-        System.out.println("Activity added successfully.");
+        if(project == null) {
+            System.out.println("Project does not exist");
+        } else {
+            System.out.print("Enter activity name: ");
+            String activityName = scanner.nextLine();
+            System.out.print("Enter estimated hours: ");
+            int hours = Integer.parseInt(scanner.nextLine());
+            project.addActivity(new ActivityImpl(activityName, hours));
+            System.out.println("Activity added successfully.");
+        }
     }
 
     private void addActivityToProjectInteractive() {
@@ -91,8 +94,7 @@ public class ProjectManagerApp {
             return;
         }
     
-        // Assuming that ProjectImpl class has a method to get the UUID or similar identifier
-        String projectId = selectedProject.getProjectId();  // Method getProjectId() should return a UUID
+        String projectId = selectedProject.getProjectId();
         ProjectReportGeneratorImpl reportGenerator = new ProjectReportGeneratorImpl(projectManager);
         System.out.println(reportGenerator.generateTimeReport(projectId));
     }

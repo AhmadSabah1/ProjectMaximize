@@ -16,14 +16,13 @@ public class ProjectImpl implements Project {
     private ProjectStatus status;
 
     public ProjectImpl(String name, String description) {
-        if (name == null || name.trim().isEmpty() || description == null || description.trim().isEmpty()) {
-            throw new IllegalArgumentException("Project name and description must not be empty");
+        if (!(name == null || name.trim().isEmpty() || description == null || description.trim().isEmpty())) {
+            this.id = UUID.randomUUID().toString();
+            this.name = name;
+            this.description = description;
+            this.activities = new ArrayList<>();
+            this.status = ProjectStatus.ACTIVE;
         }
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.activities = new ArrayList<>();
-        this.status = ProjectStatus.ACTIVE;
     }
 
     @Override
