@@ -1,0 +1,36 @@
+To run the Project Management System in Eclipse, follow these steps:
+
+### Import the Project into Eclipse:
+
+Open Eclipse
+Select File > Import.
+Choose Existing Maven Projects under Maven.
+Navigate to the directory where you cloned the repository and select the project.
+Click Finish to import the project into Eclipse.
+
+### Build the Project:
+
+Right-click on the project in the Project Explorer.
+Select Run As > Maven install. This will build the project and run all tests, including Cucumber tests.
+
+### Run Cucumber Tests:
+
+Right-click on the project.
+Navigate to Run As > JUnit Test.
+Ensure your Cucumber runner class is selected to execute the tests.
+
+### Login Details :
+
+Only username is required for the login details.
+
+#### Employees:
+- Max
+- Joseph
+- Nabaa
+- Ahmad
+
+#### Project Managers:
+- Kasper
+- Hans
+- Christian
+- Hussein
