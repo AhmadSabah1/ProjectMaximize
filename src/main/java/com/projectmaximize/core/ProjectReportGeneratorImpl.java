@@ -2,6 +2,7 @@ package com.projectmaximize.core;
 
 import com.projectmaximize.interfaces.*;
 
+//Joseph
 public class ProjectReportGeneratorImpl implements ProjectReportGenerator {
     private ProjectManager projectManager;
 

@@ -8,6 +8,7 @@ import com.projectmaximize.app.ProjectManagerApp;
 import com.projectmaximize.core.EmployeeImpl;
 import com.projectmaximize.core.ProjectManagerImpl;
 
+//All
 public class App {
     private static Scanner scanner = new Scanner(System.in);
 

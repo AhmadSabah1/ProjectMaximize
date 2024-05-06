@@ -7,6 +7,7 @@ import java.util.UUID;
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Employee;
 
+//Joseph
 public class ActivityImpl implements Activity {
     private String id;
     private String name;

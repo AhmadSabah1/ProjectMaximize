@@ -11,6 +11,7 @@ import com.projectmaximize.core.ProjectManagerImpl;
 import com.projectmaximize.core.ProjectReportGeneratorImpl;
 import com.projectmaximize.interfaces.Activity;
 
+//Ahmad
 public class ProjectManagerApp {
     private ProjectManagerImpl projectManager;
     private Scanner scanner;

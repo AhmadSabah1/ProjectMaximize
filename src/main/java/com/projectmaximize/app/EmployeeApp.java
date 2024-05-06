@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.projectmaximize.core.EmployeeImpl;
 import com.projectmaximize.interfaces.Activity;
 
+//Max
 public class EmployeeApp {
     private Scanner scanner;
     private EmployeeImpl employee = null;
