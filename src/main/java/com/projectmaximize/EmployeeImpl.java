@@ -1,4 +1,4 @@
-package com.projectmaximize.core;
+package com.projectmaximize;
 
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Employee;

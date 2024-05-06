@@ -5,8 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.projectmaximize.interfaces.Project;
-import com.projectmaximize.core.EmployeeImpl;
-import com.projectmaximize.core.ProjectManagerImpl;
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Employee;
 

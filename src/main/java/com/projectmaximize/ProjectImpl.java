@@ -1,4 +1,4 @@
-package com.projectmaximize.core;
+package com.projectmaximize;
 
 import java.util.UUID;
 import com.projectmaximize.interfaces.Activity;

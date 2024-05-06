@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.projectmaximize.core.ProjectImpl;
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Project;
 

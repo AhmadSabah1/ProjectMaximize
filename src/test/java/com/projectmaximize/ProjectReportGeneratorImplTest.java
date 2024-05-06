@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import com.projectmaximize.interfaces.Project;
 import com.projectmaximize.interfaces.ProjectManager;
-import com.projectmaximize.core.EmployeeImpl;
-import com.projectmaximize.core.ProjectReportGeneratorImpl;
 import com.projectmaximize.interfaces.Activity;
 
 import java.util.Arrays;
