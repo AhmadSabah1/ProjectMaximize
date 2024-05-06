@@ -1,9 +1,13 @@
-package com.projectmaximize;
+package com.projectmaximize.core;
 
-import com.projectmaximize.interfaces.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.projectmaximize.interfaces.Activity;
+import com.projectmaximize.interfaces.Employee;
+import com.projectmaximize.interfaces.Project;
+import com.projectmaximize.interfaces.ProjectManager;
 
 public class ProjectManagerImpl implements ProjectManager {
     private String name;

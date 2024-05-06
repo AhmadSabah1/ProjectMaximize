@@ -3,6 +3,11 @@ package com.projectmaximize;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.projectmaximize.app.EmployeeApp;
+import com.projectmaximize.app.ProjectManagerApp;
+import com.projectmaximize.core.EmployeeImpl;
+import com.projectmaximize.core.ProjectManagerImpl;
+
 public class App {
     private static Scanner scanner = new Scanner(System.in);
 
