@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import com.projectmaximize.EmployeeImpl;
-import com.projectmaximize.ProjectManagerImpl;
-import com.projectmaximize.ProjectReportGeneratorImpl;
+import com.projectmaximize.core.EmployeeImpl;
+import com.projectmaximize.core.ProjectManagerImpl;
+import com.projectmaximize.core.ProjectReportGeneratorImpl;
 import com.projectmaximize.interfaces.Activity;
 import com.projectmaximize.interfaces.Project;
 

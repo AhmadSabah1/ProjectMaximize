@@ -1,4 +1,4 @@
-package com.projectmaximize;
+package com.projectmaximize.core;
 
 import java.util.ArrayList;
 import java.util.List;

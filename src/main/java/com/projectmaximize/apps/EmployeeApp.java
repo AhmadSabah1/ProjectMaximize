@@ -1,9 +1,10 @@
-package com.projectmaximize;
+package com.projectmaximize.apps;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.projectmaximize.core.EmployeeImpl;
 import com.projectmaximize.interfaces.Activity;
 
 public class EmployeeApp {

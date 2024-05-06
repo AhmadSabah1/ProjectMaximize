@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 
+import com.projectmaximize.core.EmployeeImpl;
 import com.projectmaximize.interfaces.Activity;
 
 public class EmployeeImplTest {

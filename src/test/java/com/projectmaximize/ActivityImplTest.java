@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.projectmaximize.core.ActivityImpl;
 import com.projectmaximize.interfaces.Activity;
 
 public class ActivityImplTest {
