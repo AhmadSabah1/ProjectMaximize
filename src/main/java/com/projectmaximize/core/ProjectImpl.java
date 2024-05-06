@@ -56,6 +56,7 @@ public class ProjectImpl implements Project {
         return id;
     }
 
+    @Override
     public void editProjectDetails(String newName, String newDescription) {
         if (newName != null && !newName.trim().isEmpty()) {
             this.name = newName;
