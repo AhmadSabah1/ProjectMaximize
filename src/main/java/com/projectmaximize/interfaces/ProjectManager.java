@@ -10,4 +10,5 @@ public interface ProjectManager {
     Project getProject(String projectId);
     String getName();
     Project getProjectByName(String projectName);
+    void displayAllProjects();
 }

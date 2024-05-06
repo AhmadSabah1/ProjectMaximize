@@ -92,7 +92,8 @@ public class ProjectManagerImpl implements ProjectManager {
     public Map<String, ProjectImpl> getProjects() {
         return projects;
     }
-
+    
+    @Override
     public void displayAllProjects() {
         if (projects.isEmpty()) {
             System.out.println("No projects available.");
